@@ -1,0 +1,2159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AIUN IT LABS LLP — Home</title>
+<link rel="icon" href="./../images/aiun.ico.jpeg">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+:root{
+  --accent:#f3840c;
+  --text-dark:#ffffff;
+  --text-light:#cccccc;
+  --border:rgba(255,255,255,0.15);
+  --shadow:none;
+  --radius:12px;
+  --grid:rgba(255,255,255,0.05);
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:'Inter',sans-serif;
+  background:#000;
+  color:#ffffff;
+}
+
+header.premium-header{
+  position:fixed;
+  top:0; left:0; right:0;
+  padding:5px 40px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:rgba(255,255,255,0.92);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+  
+  z-index:3000;
+  transition:all .25s ease;
+}
+
+.nav-left{
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+
+.logo-circle{
+  width:110px;
+  height:110px;
+  border-radius:50%;
+  background:rgba(255,255,255,0.04);backdrop-filter:blur(10px);border:1px solid var(--border);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
+  
+  border:1px solid #f3f3f3;
+}
+.logo-circle img{
+  width:110px;
+  height:95px;
+  border-radius:50%;
+  object-fit:contain;
+}
+
+.brand-text strong{
+  font-size:18px;
+  font-weight:800;
+  display:block;
+  color:#000000;
+}
+.brand-text small{
+  font-size:12px;
+  color:#bbbbbb;
+}
+
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:20px;
+}
+.nav-links a{
+  font-weight:600;
+  text-decoration:none;
+  padding:8px 10px;
+  border-radius:8px;
+  color:#000000;
+  cursor:pointer;
+}
+.nav-links a:hover{
+  background:#5b0aff;
+  color:#ffffff;
+}
+
+
+.nav-links a::before,
+.dropdown a::before{
+  content: attr(data-icon);
+  margin-right:8px;
+  display:inline-block;
+  vertical-align:middle;
+  transform-origin:center;
+}
+
+
+
+.services-menu{ position:relative; }
+
+.dropdown{
+  position:absolute;
+  top:56px;
+  left:0;
+  width:260px;
+  background:#000000;
+  border:1px solid var(--border);
+  padding:10px 0;
+  border-radius:var(--radius);
+  opacity:0;
+  pointer-events:auto;
+  transform:translateY(10px);
+  transition:all .25s ease;
+}
+
+.services-menu:hover > .dropdown{
+  opacity:1;
+  pointer-events:auto;
+  transform:translateY(0);
+}
+
+.dropdown a{
+  display:block;
+  padding:12px 20px;
+  font-weight:600;
+  text-decoration:none;
+  background: linear-gradient(90deg, #ff6b6b, #f8e71c, #6bff95, #6bb5ff, #d96bff);
+  background-clip: text;
+-webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient {
+    background: linear-gradient(45deg, #ff6b6b, #5f27cd);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+}
+
+.dropdown a:hover{
+  background: #5b0aff !important;
+  color:#ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+.dropdown a:hover{
+  background:#fff5e4;
+  color:var(--accent);
+}
+
+.dropdown-item{ position:relative; }
+
+.submenu{
+  position:absolute;
+  top:0;
+  left:240px;
+  min-width:240px;
+  background:rgba(255,255,255,0.04);backdrop-filter:blur(10px);border:1px solid var(--border);
+  padding:10px 0;
+  border-radius:var(--radius);
+  border:1px solid var(--border);
+  
+  opacity:0;
+  pointer-events:none;
+  transform:translateX(8px);
+  transition:all 0.22s ease;
+}
+.dropdown-item:hover > .submenu{
+  opacity:1;
+  pointer-events:auto;
+  transform:translateX(0);
+}
+
+.right-arrow{
+  float:right;
+  color:#888;
+  transition:0.18s ease;
+}
+.dropdown-item:hover .right-arrow{
+  transform:translateX(4px);
+  color:var(--accent);
+}
+
+
+.mobile-toggle{
+  display:none;
+  background:none;
+  border:none;
+  font-size:30px;
+  cursor:pointer;
+}
+
+@media(max-width:920px){
+  .nav-links{ display:none; }
+  .mobile-toggle{ display:block; }
+}
+
+.mobile-overlay{
+  position:fixed;
+  top:0; left:0;
+  width:100%; height:100%;
+  background:rgba(0,0,0,0.45);
+  display:none;
+  z-index:2800;
+}
+.mobile-overlay.show{ display:block; }
+
+.mobile-menu{
+  position:fixed;
+  top:0; left:-320px;
+  width:300px;
+  height:100%;
+  background:rgba(255,255,255,0.04);backdrop-filter:blur(10px);border:1px solid var(--border);
+  padding:20px;
+  border-radius:0 12px 12px 0;
+  
+  transition:0.35s ease;
+  z-index:2900;
+  overflow-y:auto;
+}
+.mobile-menu.open{ left:0; }
+
+.mobile-menu .mobile-section-title{
+  font-weight:700;
+  margin:12px 0 6px;
+}
+
+.mobile-drop-btn{
+  width:100%;
+  text-align:left;
+  background:none;
+  border:none;
+  padding:10px 6px;
+  font-weight:700;
+  cursor:pointer;
+}
+
+.mobile-drop-content{ display:none; padding-left:8px; }
+.mobile-drop-content button{ width:100%; text-align:left; padding:8px 6px; border:none; background:none; cursor:pointer; }
+
+.slider-container{
+  width:100%;
+  height: 65vh;
+  margin-top:160px;
+  position:relative;
+  overflow:hidden;
+  border-radius: 10px;
+}
+
+.slide{
+  position:absolute;
+  inset:0;
+  background-size:cover;
+  background-position:center;
+  opacity:0;
+  transition:opacity 1s;
+}
+.slide.active{ opacity:1; }
+
+.slider-overlay{ position:absolute; inset:0; }
+
+.slide-content{
+  position:absolute;
+  bottom:120px;
+  left:70px;
+  max-width:700px;
+}
+.slide-content h1{ font-size:54px; font-weight:800; }
+.slide-content span{ color:var(--accent); }
+.slide-content p{ font-size:18px; color:white; }
+
+.section{ max-width:1200px; margin:40px auto; display:none; }
+.section.active{ display:block; }
+
+.page-content{ background:rgba(255,255,255,0.04);backdrop-filter:blur(10px);border:1px solid var(--border); padding:30px; border-radius:12px;  }
+
+.page-banner { height: 420px; border-radius: 12px; background-size: cover; background-position: center; margin-bottom: 20px;  }
+
+.back-btn{ background:var(--accent); color:white; padding:10px 16px; border-radius:8px; text-decoration:none; font-weight:700; }
+
+.floating-whatsapp,
+.floating-call{
+  position:fixed;
+  width:54px; height:54px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.04);backdrop-filter:blur(10px);border:1px solid var(--border);  z-index:3500; transition:0.25s ease;
+}
+.floating-whatsapp{ right:18px; bottom:22px; border:3px solid #25D366; }
+.floating-whatsapp img{ width:28px; height:28px; object-fit:contain; }
+.floating-whatsapp:hover{ transform:translateY(-5px); }
+
+@media(max-width:680px){
+  .floating-whatsapp{ width:48px; height:48px; }
+  .floating-whatsapp img{ width:24px; height:24px; }
+}
+
+.pro-footer{ background:rgba(255,255,255,0.04);backdrop-filter:blur(10px);border:1px solid var(--border); padding:60px 20px 30px; margin-top:80px; border-top:1px solid #eee; }
+.footer-grid{ max-width:1200px; margin:auto; display:flex; justify-content:space-between; flex-wrap:wrap; gap:40px; }
+.footer-col{ min-width:200px; }
+.footer-col h4{ font-size:18px; color:#ffffff; margin-bottom:10px; font-weight:700; }
+.footer-col p{ color:#bbbbbb; font-size:15px; line-height:1.6; }
+.footer-col a{ display:block; margin:6px 0; color:#dddddd; font-size:15px; text-decoration:none; transition:.2s; cursor:pointer; }
+.footer-col a:hover{ color:var(--accent); }
+.social-row{ display:flex; gap:18px; align-items:center; margin-top:8px; }
+.social-row img{ width:28px; height:28px; filter:grayscale(1); transition:0.3s; }
+.social-row img:hover{ filter:none; transform:scale(1.15); }
+.footer-bottom{ text-align:center; font-size:14px; color:#cccccc; margin-top:40px; padding-top:20px; border-top:1px solid #eee; }
+@media(max-width:700px){ .footer-grid{ flex-direction:column; text-align:center; gap:30px; } .social-row{ justify-content:center; } }
+
+.section { margin-top: 150px; }
+#home { margin-top: 0; }
+.inner-page-wrapper{ display:flex; align-items:center; gap:30px; padding:30px; background:rgba(255,255,255,0.04);backdrop-filter:blur(10px);border:1px solid var(--border); border-radius:12px;  flex-wrap:wrap; margin-top:20px; }
+.inner-left{ flex:1; min-width:280px; }
+.inner-left h2{ font-size:28px; color:var(--accent); margin-top:0; }
+.inner-left p{ color:#ffffff; line-height:1.7; font-size:17px; }
+.inner-right{ flex:1; min-width:280px; }
+.inner-right img{ width:100%; max-width:480px; height:300px; object-fit:cover; border-radius:12px;  }
+
+
+.slider-btn{ position:absolute; top:50%; transform:translateY(-50%); background:rgba(0,0,0,0.35); color:white; border:none; padding:10px 14px; border-radius:8px; cursor:pointer; }
+#prevBtn{ left:18px; }
+#nextBtn{ right:18px; }
+
+
+.submenu a::before{
+  content:"✔ ";
+  color:var(--accent);
+  margin-right:6px;
+}
+
+
+#careerForm input,
+#careerForm select,
+#careerForm textarea{
+  background:#ffffff !important;
+  color:#000000 !important;
+  border:1px solid #000000 !important;
+  padding:12px;
+  border-radius:8px;
+  font-size:15px;
+}
+#careerForm input::placeholder,
+#careerForm textarea::placeholder{
+  color:#555555 !important;
+}
+#careerForm select{
+  background:#ffffff !important;
+  color:#000000 !important;
+}
+
+
+.dell-hero-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.dell-hero-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #020202;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 14px;
+  padding: 45px;
+  margin-bottom: 40px;
+  gap: 40px;
+}
+
+.dell-hero-left {
+  flex: 1;
+}
+
+.dell-hero-left h1 {
+  font-size: 42px;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0 0 12px;
+  line-height: 1.1;
+}
+
+.dell-hero-left h1 span {
+  color: #f3840c;
+}
+
+.dell-hero-left p {
+  color: #d1d1d1;
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 22px;
+}
+
+.dell-hero-tags span {
+  display: inline-block;
+  background: #111;
+  padding: 8px 14px;
+  margin-right: 8px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.15);
+  font-size: 14px;
+  color: #fff;
+}
+
+.dell-hero-right {
+  flex: 1;
+  height: 340px;
+}
+
+.dell-hero-right img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 14px;
+  box-shadow: 0 0 20px rgba(255,255,255,0.08);
+}
+
+
+
+.faq-section {
+  max-width: 1200px;
+  margin: 30px auto;
+  background: #030303;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 14px;
+  padding: 35px;
+}
+
+.faq-title {
+  font-size: 34px;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.faq-controls {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.faq-controls span {
+  color: #8bd3ff;
+  cursor: pointer;
+  margin: 0 15px;
+}
+
+.faq-item {
+  padding: 15px 0;
+  border-top: 1px solid rgba(255,255,255,0.15);
+}
+
+.faq-question {
+  background: none;
+  border: none;
+  width: 100%;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 700;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+}
+
+.faq-question:hover {
+  color: #f3840c;
+}
+
+.faq-arrow {
+  transition: 0.3s ease;
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  color: #d0d0d0;
+  font-size: 16px;
+  line-height: 1.6;
+  transition: max-height 0.3s ease;
+  padding-right: 20px;
+}
+
+
+
+.cta-block {
+  max-width: 1200px;
+  margin: 60px auto;
+  text-align: center;
+  padding-bottom: 30px;
+}
+
+.cta-title {
+  font-size: 40px;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.cta-sub {
+  color: #cccccc;
+  font-size: 18px;
+  margin-bottom: 25px;
+}
+
+.cta-btn {
+  padding: 14px 35px;
+  background: #ffffff;
+  color: #000000;
+  border: 2px solid #f3840c;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 700;
+  transition: 0.3s;
+}
+
+.cta-btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 30px rgba(255,180,120,0.3);
+}
+
+
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 253, 253, 0.75);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.popup-box {
+  width: 350px;
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 12px;
+}
+
+.popup-box h2 {
+  font-size: 22px;
+  font-weight: 800;
+  margin: 0 0 15px;
+  color: #f1ebeb;
+}
+
+.popup-close {
+  float: right;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.popup-box label {
+  font-weight: 600;
+  font-size: 14px;
+  color: #f0eaea;
+}
+
+.popup-box input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #222121;
+  border-radius: 6px;
+  margin-bottom: 12px;
+}
+
+.popup-submit {
+  width: 100%;
+  padding: 12px;
+  margin-top: 5px;
+  background: linear-gradient(90deg,#9b23ea,#ff6f00,#3aff22);
+  border: none;
+  color: #ffffff;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.popup-overlay{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.3s ease;
+  z-index: 5000;
+}
+
+
+.popup-overlay.show{
+  opacity: 1;
+  pointer-events: auto;
+}
+
+
+.popup-box{
+  width: 90%;
+  max-width: 420px;
+  background: #111;
+  padding: 25px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 0 25px rgba(0,0,0,0.6);
+  position: relative;
+  animation: popIn 0.3s ease;
+}
+
+@keyframes popIn{
+  from{ transform: scale(0.85); opacity: 0; }
+  to{ transform: scale(1); opacity: 1; }
+}
+
+
+.popup-close{
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  color: #fff;
+}
+
+.popup-box input{
+  width: 100%;
+  padding: 12px;
+  margin-top: 8px;
+  margin-bottom: 15px;
+  background: #222;
+  color: #fff;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.25);
+  font-size: 15px;
+}
+
+.popup-box input:focus{
+  outline: none;
+  border-color: var(--accent);
+}
+
+
+.popup-submit{
+  width: 100%;
+  padding: 12px;
+  background: var(--accent);
+  border: none;
+  color: #f7e9e9;
+  font-weight: 700;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.popup-submit:hover{
+  opacity: 0.85;
+}
+
+.faq-section{
+  background: #000;
+  padding: 40px 20px;
+  border-radius: 12px;
+  margin-top: 40px;
+}
+
+
+.faq-title{
+  font-size: 32px;
+  text-align: center;
+  color: var(--accent);
+  font-weight: 800;
+  margin-bottom: 25px;
+}
+
+
+.faq-controls{
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  font-size: 16px;
+  color: #f3840c;
+  font-weight: 700;
+  margin-bottom: 25px;
+}
+.faq-controls span{
+  cursor: pointer;
+}
+.faq-controls span:hover{
+  text-decoration: underline;
+}
+
+
+.faq-item{
+  background: #111;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 10px;
+  margin-bottom: 12px;
+  transition: 0.25s;
+}
+
+
+.faq-question{
+  width: 100%;
+  padding: 7px 20px;
+  background: #111;
+  border: none;
+  color: #fff;
+  text-align: left;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.faq-question:hover{
+  background: #1a1a1a;
+}
+
+
+.faq-arrow{
+  transition: transform 0.25s ease;
+}
+
+
+.faq-answer{
+  padding: 16px 20px;
+  color: #cfcfcf;
+  font-size: 16px;
+  line-height: 0.7;
+  display: none;  
+  white-space: normal;  
+}
+#home{
+  padding-top: 140px;
+}
+.hero-slider {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.hero-slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.hero-slide.active { opacity: 1; }
+
+.hero-content {
+    position: absolute;
+    top: 50%;
+    left: 7%;
+    transform: translateY(-50%);
+    color: white;
+    max-width: 450px;
+}
+
+.hero-content h1 {
+    font-size: 48px;
+    font-weight: 800;
+}
+
+.hero-content h1 span {
+    color: orange;
+}
+
+.hero-content p {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+.hero-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.5);
+    color: white;
+    font-size: 30px;
+    padding: 10px 18px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.hero-arrow.left { left: 20px; }
+.hero-arrow.right { right: 20px; }
+
+
+.hero-dots {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+}
+
+.hero-dots span {
+    height: 12px;
+    width: 12px;
+    margin: 4px;
+    background: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.hero-dots span.active {
+    background: white;
+}
+
+
+.services-menu {
+  position: relative;
+  display: inline-block;
+}
+
+.services-menu > a {
+  color: #000;
+  font-weight: 600;
+  padding: 12px 18px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.services-menu > a:hover {
+  color: #6a00ff; 
+}
+
+.dropdown {
+  position: absolute;
+  top: 55px;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+
+  width: 655px;
+  background: #ffffff;
+  border-radius: 20px;
+
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;                 
+
+  box-shadow: 0px 5px 25px rgba(0,0,0,0.18);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.25s ease;
+  z-index: 9999;
+}
+
+.dropdown-section {
+  width: 40% !important;     
+}
+
+
+.services-menu:hover .dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+
+.dropdown-section h4 {
+  margin-bottom: 14px;
+  font-size: 16.5px;
+  font-weight: 500;
+  color: #000;
+}
+
+
+.dropdown-section a {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 0;
+  font-size: 15px;
+  color: #000;
+  transition: 0.2s ease;
+}
+
+
+.dropdown-section a::before {
+  content: "›";
+  color: #ff7a00;
+  font-size: 18px;
+}
+
+.dropdown-section a:hover {
+  color: #faf9fc;
+  padding-left: 7px;
+}
+
+.it-training-menu .dropdown {
+  width: 300px !important;     
+  left: 70%;
+  transform: translateX(-50%) translateY(10px);
+  padding: 19px 20px;           
+  gap: 15px;                    
+}
+
+
+.services-menu:nth-child(2) .dropdown {
+  width: 600px; 
+}
+
+
+.pro-footer {
+  background: #0d0d0d;
+  color: #ffffff;
+  padding: 50px 10%;
+  margin-top: 60px;
+  font-family: 'Inter', sans-serif;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.footer-column {
+  width: 22%;
+}
+
+.footer-logo {
+  width: 80px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+}
+
+.footer-about {
+  font-size: 14px;
+  line-height: 1.6;
+  opacity: 0.85;
+}
+
+
+.footer-column h4 {
+  margin-bottom: 12px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #ffffff;
+  border-left: 3px solid #6a00ff;
+  padding-left: 8px;
+}
+
+.footer-column a {
+  display: block;
+  color: #cccccc;
+  font-size: 14px;
+  margin: 6px 0;
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+
+.footer-column a:hover {
+  color: #6a00ff;
+  padding-left: 6px;
+}
+
+.social-icons a {
+  display: inline-block;
+  padding: 8px 14px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  border-radius: 6px;
+  font-size: 14px;
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+
+.yt { background: #FF0000; }
+.ig { background: #C13584; }
+.fb { background: #1877F2; }
+.ln { background: #0077B5; }
+
+.social-icons a:hover {
+  opacity: 0.8;
+  transform: translateY(-2px);
+}
+
+
+.footer-bottom {
+  text-align: center;
+  border-top: 1px solid #333;
+  padding-top: 15px;
+  margin-top: 20px;
+  font-size: 14px;
+  opacity: 0.75;
+}
+ 
+.social-round a {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 20px;
+  color: white;
+
+  margin-right: 10px;
+  background: #333;
+  transition: 0.3s ease;
+}
+
+.social-round .yt { background: #FF0000; }
+.social-round .ig { background: #C13584; }
+.social-round .fb { background: #1877F2; }
+.social-round .ln { background: #0077B5; }
+
+
+.social-round a:hover {
+  transform: translateY(-3px);
+  opacity: 0.8;
+}
+
+#about {
+  font-family: 'Inter', sans-serif;
+  color: #ffffff;
+}
+
+
+#about h2 {
+  text-align: center;
+  font-size: 34px;
+  font-weight: 800;
+  margin-bottom: 5px;
+}
+
+
+.tagline {
+  color: #ffd699;
+  font-size: 22px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+
+.about-top {
+  display: flex;
+  gap: 20px;
+  margin-top: 18px;
+  flex-wrap: wrap;
+}
+
+
+#about h3 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-top: 20px;
+  color: #f04ca6;
+  border-left: 4px solid #969593;
+  padding-left: 10px;
+}
+
+
+#about p, 
+#about ul {
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+#about ul {
+  padding-left: 20px;
+}
+
+#about ul li {
+  margin-bottom: 8px;
+}
+
+/* First image block */
+.about-image-block {
+  flex: 1;
+  min-width: 280px;
+  text-align: center;
+}
+
+.first-img {
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 8px solid #ffe2c4;
+}
+
+.section-divider {
+  margin: 30px auto;
+  width: 80%;
+  height: 1px;
+  background: #444;
+  border: 0;
+}
+
+
+.about-working-image {
+  width: 380px;
+  height: 240px;
+  border-radius: 18px;
+  object-fit: cover;
+  border: 6px solid #ffe2c4;
+  display: block;
+  margin: 20px auto;
+}
+
+
+@media (max-width: 768px) {
+  .about-top {
+    flex-direction: column;
+  }
+  .first-img {
+    margin-bottom: 20px;
+  }
+}
+.team-section {
+  padding: 50px 10%;
+  text-align: center;
+  color: #ffffff;
+}
+
+.team-title {
+  font-size: 32px;
+  font-weight: 800;
+  margin-bottom: 30px;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+}
+
+.team-card {
+  background: #1a1a1a;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  transition: 0.3s;
+}
+
+.team-card:hover {
+  transform: translateY(-6px);
+}
+
+.team-card img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #ffe2c4;
+  margin-bottom: 10px;
+}
+
+.team-card h3 {
+  font-size: 18px;
+  margin-bottom: 5px;
+  font-weight: 700;
+}
+
+.team-card p {
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.why-us-section {
+  padding: 60px 10%;
+  text-align: center;
+  color: #ffffff;
+}
+
+.why-title {
+  font-size: 34px;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.why-subtitle {
+  font-size: 16px;
+  opacity: 0.8;
+  max-width: 650px;
+  margin: 0 auto 40px;
+}
+
+
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 25px;
+}
+
+
+.why-card {
+  background: #1a1a1a;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+  transition: 0.3s ease;
+}
+
+.why-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.45);
+}
+
+
+.why-card i {
+  font-size: 40px;
+  color: #ffd699;
+  margin-bottom: 15px;
+}
+
+
+.why-card h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.why-card p {
+  font-size: 14px;
+  opacity: 0.8;
+  line-height: 1.6;
+}
+
+
+@media (max-width: 768px) {
+  .why-us-section {
+    padding: 40px 8%;
+  }
+}
+
+
+
+
+
+</style>
+
+</head>
+
+<body>
+<header class="premium-header">
+  <div class="nav-left">
+    <div class="logo-circle">
+      <img src="https://pbs.twimg.com/profile_images/1810940507700563969/dqaAHU54.jpg" alt="AIUN logo">
+    </div>
+    <div class="brand-text">
+      <strong>AIUN IT LABS </strong>
+    </div>
+  </div>
+
+  
+  <nav class="nav-links">
+
+    <a  onclick="showSection('home')">Home</a>
+    <a  onclick="showSection('about')">About Us</a>
+
+    
+    <div class="services-menu">
+      <a>Services ▾</a>
+
+      <div class="dropdown">
+
+        <div class="dropdown-section">
+          <h4>Software Development</h4>
+          <a onclick="showSection('software-app')">App Development</a>
+          <a onclick="showSection('software-web')">Web Development</a>
+          <a onclick="showSection('software-db')">Database Development</a>
+        </div>
+
+        <div class="dropdown-section">
+          <h4>Digital Marketing</h4>
+          <a onclick="showSection('marketing-social')">Social Media Marketing</a>
+          <a onclick="showSection('marketing-seo')">SEO</a>
+          <a onclick="showSection('marketing-ads')">Ads Designing</a>
+        </div>
+
+        <div class="dropdown-section">
+          <h4>Computer Sales & AMC</h4>
+          <a onclick="showSection('sales-amc')">AMC Services</a>
+          <a onclick="showSection('sales-computers')">Computer Sales</a>
+          <a onclick="showSection('sales-printers')">Printers</a>
+        </div>
+
+        <div class="dropdown-section">
+          <h4>Profitable Investment</h4>
+          <a onclick="showSection('invest-programs')">Investment Programs</a>
+          <a onclick="showSection('invest-micro')">Micro Finance</a>
+          <a onclick="showSection('invest-smallbiz')">Small Business Funding</a>
+        </div>
+
+      </div>
+    </div>
+
+
+    
+   <div class="services-menu">
+      <a>IT Training ▾</a>
+
+      <div class="dropdown">
+
+        <div class="dropdown-section">
+          <h4>Computer Courses</h4>
+          <a onclick="showSection('training-basics')">Basics to Advanced</a>
+          <a onclick="showSection('training-technical')">Technical Training</a>
+        </div>
+
+        <div class="dropdown-section">
+          <h4>Creative Courses</h4>
+          <a onclick="showSection('training-webdesign')">Web Designing</a>
+        </div>
+
+        <div class="dropdown-section">
+          <h4>Accounting</h4>
+          <a onclick="showSection('training-accounting')">Tally + GST</a>
+        </div>
+
+      </div>
+    </div>
+
+
+    <a  onclick="showSection('careers')">Careers</a>
+    <a  onclick="showSection('contact')">Contact</a>
+
+    <button class="mobile-toggle" onclick="openMobileMenu()">☰</button>
+
+  </nav>
+</header>
+
+<div id="mobileOverlay" class="mobile-overlay" onclick="closeMobileMenu()"></div>
+
+
+<div id="mobileMenu" class="mobile-menu">
+
+  <div style="display:flex;justify-content:space-between;align-items:center;">
+    <span style="font-weight:800;">Menu</span>
+    <button style="background:none;border:none;font-size:22px;cursor:pointer;" onclick="closeMobileMenu()">✕</button>
+  </div>
+
+  <a onclick="closeMobileMenu(); showSection('home');">Home</a>
+  <a onclick="closeMobileMenu(); showSection('about');">About Us</a>
+
+  <div style="margin-top:8px;">
+    <div class="mobile-section-title">Services</div>
+    <button class="mobile-drop-btn" onclick="toggleMobileDropdown(this)">Software Development ▾</button>
+    <div class="mobile-drop-content">
+      <button onclick="closeMobileMenu(); showSection('software-app')">App Development</button>
+      <button onclick="closeMobileMenu(); showSection('software-web')">Web Development</button>
+      <button onclick="closeMobileMenu(); showSection('software-db')">Database Development</button>
+    </div>
+
+    <button class="mobile-drop-btn" onclick="toggleMobileDropdown(this)">Digital Marketing ▾</button>
+    <div class="mobile-drop-content">
+      <button onclick="closeMobileMenu(); showSection('marketing-social')">Social Media Marketing</button>
+      <button onclick="closeMobileMenu(); showSection('marketing-seo')">SEO</button>
+      <button onclick="closeMobileMenu(); showSection('marketing-ads')">Ads Designing</button>
+    </div>
+
+    <button class="mobile-drop-btn" onclick="toggleMobileDropdown(this)">Computer Sales & AMC ▾</button>
+    <div class="mobile-drop-content">
+      <button onclick="closeMobileMenu(); showSection('sales-amc')">AMC Services</button>
+      <button onclick="closeMobileMenu(); showSection('sales-computers')">Computer Sales</button>
+      <button onclick="closeMobileMenu(); showSection('sales-printers')">Printers</button>
+    </div>
+
+    <button class="mobile-drop-btn" onclick="toggleMobileDropdown(this)">Profitable Investment ▾</button>
+    <div class="mobile-drop-content">
+      <button onclick="closeMobileMenu(); showSection('invest-programs')">Investment Programs</button>
+      <button onclick="closeMobileMenu(); showSection('invest-micro')">Micro Finance</button>
+      <button onclick="closeMobileMenu(); showSection('invest-smallbiz')">Small Business Funding</button>
+    </div>
+  </div>
+
+  <div style="margin-top:12px;">
+    <div class="mobile-section-title">IT Training</div>
+    <button class="mobile-drop-btn" onclick="toggleMobileDropdown(this)">Computer Courses ▾</button>
+    <div class="mobile-drop-content">
+      <button onclick="closeMobileMenu(); showSection('training-basics')">Basics to Advanced</button>
+      <button onclick="closeMobileMenu(); showSection('training-technical')">Technical Training</button>
+    </div>
+
+    <button class="mobile-drop-btn" onclick="toggleMobileDropdown(this)">Creative Courses ▾</button>
+    <div class="mobile-drop-content">
+      <button onclick="closeMobileMenu(); showSection('training-webdesign')">Web Designing</button>
+    </div>
+
+    <button class="mobile-drop-btn" onclick="toggleMobileDropdown(this)">Accounting ▾</button>
+    <div class="mobile-drop-content">
+      <button onclick="closeMobileMenu(); showSection('training-accounting')">Tally + GST</button>
+    </div>
+  </div>
+
+  <a onclick="closeMobileMenu(); showSection('careers');">Careers</a>
+  <a onclick="closeMobileMenu(); showSection('contact');">Contact</a>
+</div>
+
+<section id="home" class="section active">
+
+  
+  <div class="hero-slider">
+      <div class="hero-slide active" style="background-image: url('https://images.unsplash.com/photo-1535223289827-42f1e9919769');">
+          <div class="hero-content">
+              <h1>Grow Your <span>Business</span></h1>
+              <p>Marketing, branding, consulting & digital growth strategies.</p>
+          </div>
+      </div>
+
+      <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1498050108023-c5249f4df085');">
+          <div class="hero-content">
+              <h1>We Build <span>Software</span></h1>
+              <p>Enterprise solutions, automation & digital transformation.</p>
+          </div>
+      </div>
+
+      <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1556761175-4b46a572b786');">
+          <div class="hero-content">
+              <h1>Training <span>Programs</span></h1>
+              <p>Upskill yourself with expert-led IT courses.</p>
+          </div>
+      </div>
+
+      
+      <div class="hero-arrow left" onclick="prevSlide()">❮</div>
+      <div class="hero-arrow right" onclick="nextSlide()">❯</div>
+
+      
+      <div class="hero-dots"></div>
+  </div>
+
+  <section id="why-us" class="why-us-section">
+
+    <h2 class="why-title">Why Choose Us</h2>
+    <p class="why-subtitle">
+      We deliver high-quality IT solutions through innovation, expertise, and unwavering commitment.
+    </p>
+
+    <div class="why-grid">
+
+      
+      <div class="why-card">
+        <i class="fas fa-certificate"></i>
+        <h3>ISO 9001:2015 Certified</h3>
+        <p>Globally recognized quality standards that ensure reliable and consistent service delivery.</p>
+      </div>
+
+      
+      <div class="why-card">
+        <i class="fas fa-users-cog"></i>
+        <h3>Expert Professionals</h3>
+        <p>A highly skilled team specializing in IT development, digital marketing, training, and consulting.</p>
+      </div>
+
+      
+      <div class="why-card">
+        <i class="fas fa-project-diagram"></i>
+        <h3>End-to-End IT Solutions</h3>
+        <p>From software development to IT training and digital marketing — everything under one roof.</p>
+      </div>
+
+      
+      <div class="why-card">
+        <i class="fas fa-handshake"></i>
+        <h3>Client-Centric Approach</h3>
+        <p>Our solutions are tailored to meet the unique goals and challenges of every client.</p>
+      </div>
+
+     
+      <div class="why-card">
+        <i class="fas fa-rocket"></i>
+        <h3>Fast & Reliable Delivery</h3>
+        <p>We follow agile and structured workflows to deliver projects on time with outstanding quality.</p>
+      </div>
+
+      
+      <div class="why-card">
+        <i class="fas fa-support"></i>
+        <h3>Dedicated Support</h3>
+        <p>24/7 customer support ensuring smooth operations and immediate assistance whenever needed.</p>
+      </div>
+
+    </div>
+
+  </section>
+ 
+  <div class="faq-section">
+
+    <h2 class="faq-title">Frequently Asked Questions</h2>
+
+    <div class="faq-controls">
+        <span onclick="expandAll()">Expand All</span>
+        <span onclick="collapseAll()">Collapse All</span>
+    </div>
+
+    <div class="faq-item">
+        <button class="faq-question" onclick="toggleFAQ(this)">
+            What services does AIUN IT Labs provide?
+            <span class="faq-arrow">▲</span>
+        </button>
+        <div class="faq-answer">
+            We provide software development, IT training, digital marketing,
+            AMC services, and business investment support.
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <button class="faq-question" onclick="toggleFAQ(this)">
+            Do you offer internship programs?
+            <span class="faq-arrow">▲</span>
+        </button>
+        <div class="faq-answer">
+            Yes, we offer internships for software development, digital marketing,
+            IT support, and web designing.
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <button class="faq-question" onclick="toggleFAQ(this)">
+            How do I enroll in a course?
+            <span class="faq-arrow">▲</span>
+        </button>
+        <div class="faq-answer">
+            Click “Get In Touch” below, fill your details, and our team will contact you within 24 hours.
+        </div>
+    </div>
+    <div class="faq-item">
+        <button class="faq-question" onclick="toggleFAQ(this)">
+            Can students work on real projects during training?
+            <span class="faq-arrow">▲</span>
+        </button>
+        <div class="faq-answer">
+            Yes. Students work on practical, real-time projects that help them understand industry workflows and build portfolio-worthy experience.
+        </div>
+    </div>
+    <div class="faq-item">
+        <button class="faq-question" onclick="toggleFAQ(this)">
+            Do you provide digital marketing services for all business types?
+            <span class="faq-arrow">▲</span>
+        </button>
+        <div class="faq-answer">
+           Yes. We support start-ups, small businesses, and enterprises with tailored digital marketing strategies designed to enhance visibility,
+            strengthen brand presence, and drive measurable growth.
+        </div>
+    </div>
+    <div class="faq-item">
+        <button class="faq-question" onclick="toggleFAQ(this)">
+            Do you help students with placements?
+            <span class="faq-arrow">▲</span>
+        </button>
+        <div class="faq-answer">
+            Yes. Our training programs include dedicated placement assistance, resume preparation, 
+            interview guidance, and career support to help students achieve successful job placements.
+        </div>
+    </div>
+  </div>
+
+
+  
+  <div class="cta-block">
+    <h2 class="cta-title">Join Aiun IT Labs now</h2>
+    <p class="cta-sub">INNOVATE . GROW . LEAD .</p>
+    <button class="cta-btn" onclick="openPopup()">Get In Touch</button>
+  </div>
+
+</section>
+
+
+
+
+<div id="popupForm" class="popup-overlay">
+  <div class="popup-box">
+
+    <span class="popup-close" onclick="closePopup()">✖</span>
+    <h2>Get In Touch</h2>
+
+    <label>Name</label>
+    <input type="text" placeholder="Enter your name">
+
+    <label>Phone</label>
+    <input type="text" placeholder="Enter phone number">
+
+    <label>Email</label>
+    <input type="email" placeholder="Enter email">
+
+    <button class="popup-submit">Submit</button>
+  </div>
+</div>
+
+
+<section id="about" class="section">
+  <div class="page-content">
+
+    
+    <h2>Aiun IT Labs</h2>
+
+    <p class="intro-text">
+      <h3 class="tagline">Trusted IT Partner Since Day One.</h3>
+      As an ISO 9001:2015 Certified company based in Visakhapatnam, we specialize in delivering 
+      excellence across multiple IT service domains. Our commitment to quality and innovation has 
+      made us a trusted name for students, professionals, and businesses alike.
+    </p>
+
+    
+    <div class="about-top">
+
+      
+      <div class="about-left">
+        
+        <h3>🎯 Our Vision</h3>
+        <p>
+          To be a trusted and globally recognized IT company that drives innovation, empowers talent, 
+          and delivers technology solutions that create long-lasting value for individuals, startups, 
+          and enterprises.
+        </p>
+
+        <h3>🧭 Our Mission</h3>
+        <p>
+          To deliver innovative and high-quality IT solutions that empower individuals and businesses 
+          to grow. We provide industry-focused training, scalable software development, strategic 
+          digital marketing, reliable IT services, and secure investment opportunities.
+        </p>
+
+        <h3>Our Core Values</h3>
+        <ul>
+          <li><strong>✓ Quality Assured:</strong> ISO 9001:2015 certified processes ensuring reliability & excellence.</li>
+          <li><strong>✓ Expert Team:</strong> A multidisciplinary team capable of delivering advanced IT solutions.</li>
+          <li><strong>✓ Client Focused:</strong> Tailor-made solutions for every client’s unique goals.</li>
+          <li><strong>✓ Long-Term Partnership:</strong> We focus on strong, sustainable relationships.</li>
+        </ul>
+
+      </div>
+
+      
+      <div class="about-image-block">
+        <img src="images/about1.jpg" class="first-img">
+      </div>
+
+    </div>
+
+   
+    <section id="team" class="team-section">
+
+      <h2 class="team-title">Our Team</h2>
+
+      <div class="team-grid">
+
+        <div class="team-card">
+          <img src="images/team1.jpg">
+          <h3>Rajesh Kumar</h3>
+          <p>Founder & CEO</p>
+        </div>
+
+        <div class="team-card">
+          <img src="images/team2.jpg">
+          <h3>Sindhu Priya</h3>
+          <p>Head of Software Development</p>
+        </div>
+
+        <div class="team-card">
+          <img src="images/team3.jpg">
+          <h3>Prasad Yadav</h3>
+          <p>Digital Marketing Manager</p>
+        </div>
+
+        <div class="team-card">
+          <img src="images/team4.jpg">
+          <h3>Divya Sri</h3>
+          <p>Training Coordinator</p>
+        </div>
+
+      </div>
+
+    </section>
+</section>
+
+
+<section id="careers" class="section">
+  <div class="page-content">
+
+    <h2>Careers</h2>
+
+    <p>
+      Join AIUN IT LABS — a small, fast-moving team building software and training solutions.  
+      We hire for curiosity, culture, and craftsmanship.
+    </p>
+
+    <div style="text-align:center; margin:25px 0;">
+      <img src="https://www.developer-tech.com/wp-content/uploads/2024/12/michel-isnard-gitlab-ai-software-development-coding-programming-artificial-intelligence.jpg"
+           style="width:100%; max-width:700px; border-radius:14px; object-fit:cover; ">
+    </div>
+
+    <h3>Open Roles</h3>
+    <ul style="line-height:1.8; color:#ffffff;">
+      <li><strong>Full-stack Engineer</strong> — React/Node, CI/CD, cloud workflows.</li>
+      <li><strong>DevOps / SRE Engineer</strong> — Infrastructure as Code, observability.</li>
+      <li><strong>Instructional Designer / Trainer</strong> — Corporate training & workshops.</li>
+    </ul>
+
+    <p>Can't find your role? Send your resume — we always welcome talent.</p>
+
+    <h3 style="margin-top:25px;">Benefits & Culture</h3>
+    <ul style="line-height:1.8; color:#ffffff;">
+      <li>Flexible work-hours & remote-friendly</li>
+      <li>Continuous learning & sponsored training</li>
+      <li>Competitive compensation & bonuses</li>
+    </ul>
+
+    <hr style="margin:25px 0; border:0; border-top:1px solid #eee;">
+
+    <h3>Quick Apply</h3>
+    <p style="color:#ffffff; margin-bottom:20px;">
+      Our HR team will contact you within 7 business days.
+    </p>
+
+    <form id="careerForm" onsubmit="submitCareerForm(event)" style="display:flex; flex-direction:column; gap:16px;">
+      <input type="text" id="c-name" placeholder="Full Name" required>
+      <input type="email" id="c-email" placeholder="Email Address" required>
+      <input type="text" id="c-phone" placeholder="Phone Number" required>
+
+      <select id="c-role" required>
+        <option value="">Select Role</option>
+        <option>Full-stack Engineer</option>
+        <option>DevOps / SRE Engineer</option>
+        <option>Instructional Designer / Trainer</option>
+        <option>Other Role</option>
+      </select>
+
+      <input type="file" id="c-resume" accept=".pdf,.doc,.docx">
+      <textarea id="c-note" placeholder="Short Message (Optional)" style="height:120px;"></textarea>
+
+      <button type="submit" class="start-btn">Submit Application</button>
+    </form>
+
+    <a class="back-btn" onclick="showSection('home')">← Back to Home</a>
+
+  </div>
+</section>
+
+<section id="training-basics" class="section">
+  <div class="inner-page-wrapper">
+    <div class="inner-left">
+      <h2>Basics to Advanced — Computer Training</h2>
+      <p>Start with the fundamentals — operating system navigation, file & folder management, MS Office tools, email, internet basics, and office workflows.</p>
+      <p>Includes hands-on labs, real tasks & certificate.</p>
+    </div>
+
+    <div class="inner-right">
+      <img src="https://i.pinimg.com/originals/74/ea/6d/74ea6d4fa6af247826327246af8635bb.png">
+    </div>
+  </div>
+</section>
+
+<section id="training-technical" class="section">
+  <div class="inner-page-wrapper">
+    <div class="inner-left">
+      <h2>Technical Training — Programming</h2>
+      <p>Learn Python, Java, C/C++, problem solving, debugging & real-world development workflows.</p>
+      <p>Project-based learning with version control & Git.</p>
+    </div>
+    <div class="inner-right">
+      <img src="https://us.v-cdn.net/6036147/uploads/NBBG6SPV956V/computer-classes-for-kids.jpg">
+    </div>
+  </div>
+</section>
+
+<section id="training-webdesign" class="section">
+  <div class="inner-page-wrapper">
+    <div class="inner-left">
+      <h2>Web Designing — HTML, CSS & JavaScript</h2>
+      <p>Build modern responsive websites using HTML5, CSS3, Flexbox, Grid & JavaScript.</p>
+      <p>Real projects: landing pages, UI layouts & portfolio sites.</p>
+    </div>
+    <div class="inner-right">
+      <img src="https://whatfix.com/blog/wp-content/uploads/2022/11/instructional-design-software-1.png">
+    </div>
+  </div>
+</section>
+
+<section id="training-accounting" class="section">
+  <div class="inner-page-wrapper">
+    <div class="inner-left">
+      <h2>Accounting — Tally & GST</h2>
+      <p>Learn Tally, GST billing, bookkeeping, ledger, vouchers & financial statements.</p>
+      <p>Perfect for small businesses, accountants & office roles.</p>
+    </div>
+    <div class="inner-right">
+      <img src="https://www.gberp.com/wp-content/uploads/2023/03/tally-prime-with-gst.jpg">
+    </div>
+  </div>
+</section>
+
+<section id="software-app" class="section">
+  <div class="inner-page-wrapper">
+    <div class="inner-left">
+      <h2>App Development — Mobile & Cross-Platform</h2>
+      <p>Learn Flutter, Android, APIs, UI design, troubleshooting, debugging & publishing apps.</p>
+    </div>
+    <div class="inner-right">
+      <img src="https://img.freepik.com/free-vector/app-development-banner_33099-1720.jpg">
+    </div>
+  </div>
+</section>
+<section id="software-web" class="section">
+  <div class="inner-page-wrapper">
+    <div class="inner-left">
+      <h2>Web Development — Full Stack</h2>
+      <p>Frontend + Backend: React, Node, PHP, APIs, authentication & database workflows.</p>
+    </div>
+    <div class="inner-right">
+      <img src="https://media.geeksforgeeks.org/wp-content/uploads/20230329122654/Front-end-vs-Back-end-copy.webp">
+    </div>
+  </div>
+</section>
+<section id="software-db" class="section">
+  <div class="inner-page-wrapper">
+    <div class="inner-left">
+      <h2>Database Development</h2>
+      <p>Learn SQL, NoSQL, schema design, queries, indexing & scalable database solutions.</p>
+    </div>
+    <div class="inner-right">
+      <img src="https://tse1.mm.bing.net/th/id/OIP.qNisSsrgVGaiLMdeoJlpjAHaEK?pid=Api&P=0&h=180">
+    </div>
+  </div>
+</section>
+
+<section id="marketing-social" class="section">
+  <div class="inner-page-wrapper">
+    <div class="inner-left">
+      <h2>Social Media Marketing</h2>
+      <p>Content planning, creatives, captions, analytics and branding for businesses.</p>
+    </div>
+    <div class="inner-right">
+      <img src="https://static.vecteezy.com/system/resources/previews/002/411/326/non_2x/online-digital-marketing-strategy-and-business-analysis-plan-business-concept-free-photo.jpg">
+    </div>
+  </div>
+</section>
+<section id="marketing-seo" class="section">
+  <div class="inner-page-wrapper">
+    <div class="inner-left">
+      <h2>SEO — Search Optimization</h2>
+      <p>Improve ranking using keywords, on-page SEO, technical SEO, and backlinks.</p>
+    </div>
+    <div class="inner-right">
+      <img src="https://www.solespire.com/wp-content/uploads/2022/12/SEO-Search-Engine-Optimization.jpg">
+    </div>
+  </div>
+</section>
+
+<section id="marketing-ads" class="section">
+  <div class="inner-page-wrapper">
+    <div class="inner-left">
+      <h2>Ads Designing — Google & Meta</h2>
+      <p>Create ad banners, A/B testing, creatives, ad copy & marketing funnels.</p>
+    </div>
+    <div class="inner-right">
+      <img src="https://www.unite.ai/wp-content/uploads/2023/05/AI-Graphic-design-tools.png">
+    </div>
+  </div>
+</section>
+
+<section id="sales-amc" class="section">
+  <div class="inner-page-wrapper">
+    <div class="inner-left">
+      <h2>AMC Services</h2>
+      <p>Annual maintenance contracts for offices & institutions — hardware, software & support.</p>
+    </div>
+    <div class="inner-right">
+      <img src="https://ssibms.in/wp-content/uploads/2019/07/AMC-Services.jpg">
+    </div>
+  </div>
+</section>
+
+<section id="sales-computers" class="section">
+  <div class="inner-page-wrapper">
+    <div class="inner-left">
+      <h2>Computer Sales</h2>
+      <p>Laptops, desktops, workstations & accessories for students, offices & enterprises.</p>
+    </div>
+    <div class="inner-right">
+      <img src="https://cdn.mos.cms.futurecdn.net/AstxGio4R3NWFRYG3aq4ZX.jpg">
+    </div>
+  </div>
+</section>
+<section id="sales-printers" class="section">
+  <div class="inner-page-wrapper">
+    <div class="inner-left">
+      <h2>Printers — Sales & Service</h2>
+      <p>Printers, scanners, toner, installation & repair services.</p>
+    </div>
+    <div class="inner-right">
+      <img src="https://office-equipment-tx.b-cdn.net/img/copiers-mn.png">
+    </div>
+  </div>
+</section>
+
+
+<section id="invest-programs" class="section">
+  <div class="inner-page-wrapper">
+    <div class="inner-left">
+      <h2>Investment Programs</h2>
+      <p>Profit-sharing investment options with transparent terms & periodic returns.</p>
+    </div>
+    <div class="inner-right">
+      <img src="https://worldbc.co/wp-content/uploads/2023/08/investment-business-budget-credit-costs-concept.jpg">
+    </div>
+  </div>
+</section>
+
+<section id="invest-micro" class="section">
+  <div class="inner-page-wrapper">
+    <div class="inner-left">
+      <h2>Micro Finance</h2>
+      <p>Support for unemployed individuals & small businesses through flexible micro-loans.</p>
+    </div>
+    <div class="inner-right">
+      <img src="https://siteimages.simplified.com/blog/image-608-1.png?auto=compress&fm=png">
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="section">
+  <div style="
+  margin-top:40px; 
+  display:flex; 
+  flex-wrap:wrap; 
+  align-items:center; 
+  justify-content:space-between; 
+  gap:50px;
+  padding:50px 10px;
+">
+
+  
+  <div style="flex:1; min-width:320px;">
+    <h3 style="color:#e85cf6; text-align:left; font-size:26px; margin-bottom:15px;">Contact Details</h3>
+    <p style="font-size:17px; color:#ffffff; line-height:1.8; text-align:left;">
+      <strong>📧 Email:</strong> services@aiunitlabs.com <br><br>
+      <strong>📍 Address:</strong><br>
+      D-NO : 48-9-18/47, SHOP NO-3, 2ND FLOOR, RATNAVENI COMPLEX,<br>
+      OPP: HOTEL BUDHIL PARK, DWARAKANAGAR 1ST LANE,<br>
+      NEAR RTC COMPLEX, VISAKHAPATNAM - 530016.
+    </p>
+  </div>
+
+  
+  <div style="flex:1; min-width:320px; text-align:center;">
+    <img src="./images/contact.png"
+         alt="Contact AIUN IT LABS"
+         style="
+           width:90%; 
+           max-width:380px; 
+           border-radius:15px;
+           display:block; 
+           margin:auto;
+           box-shadow:0 0 25px rgba(255,255,255,0.10);
+         ">
+  </div>
+
+</div>
+
+
+</section>
+
+
+<a href="https://wa.me/919000000000" class="floating-whatsapp" target="_blank">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="whatsapp">
+</a>
+
+<footer class="pro-footer">
+
+  <div class="footer-container">
+
+    
+    <div class="footer-column">
+      <img src="https://pbs.twimg.com/profile_images/1810940507700563969/dqaAHU54.jpg" class="footer-logo">
+      <p class="footer-about">
+        AIUN IT LABS – Providing modern IT solutions, software development,
+        digital marketing & training with industry expertise.
+      </p>
+    </div>
+
+    
+    <div class="footer-column">
+      <h4>Quick Links</h4>
+      <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="services.html">Services</a>
+      <a href="contact.html">Contact</a>
+    </div>
+
+   
+    <div class="footer-column">
+      <h4>Services</h4>
+      <a href="#">Software Development</a>
+      <a href="#">Digital Marketing</a>
+      <a href="#">Computer Sales & AMC</a>
+      <a href="#">Profitable Investment</a>
+    </div>
+
+    
+    <div class="footer-column">
+      <h4>Follow Us</h4>
+      <div class="social-round">
+        <a href="https://www.youtube.com" target="_blank" class="yt"><i class="fab fa-youtube"></i></a>
+        <a href="https://www.instagram.com" target="_blank" class="ig"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.facebook.com" target="_blank" class="fb"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.linkedin.com" target="_blank" class="ln"><i class="fab fa-linkedin"></i></a>
+      </div>
+    </div>
+
+
+  </div>
+
+  <div class="footer-bottom">
+    © 2025 AIUN IT LABS LLP. All Rights Reserved.
+  </div>
+
+</footer>
+
+
+<script>
+
+function showSection(id){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  const el=document.getElementById(id);
+  if(el) el.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+
+let slideIndex=0;
+function showSlide(i){
+  let slides=document.querySelectorAll('.slide');
+  slides.forEach(s=>s.classList.remove('active'));
+  slideIndex=(i+slides.length)%slides.length;
+  slides[slideIndex].classList.add('active');
+}
+setInterval(()=>showSlide(slideIndex+1),5000);
+function prevSlide(){ showSlide(slideIndex-1); }
+function nextSlide(){ showSlide(slideIndex+1); }
+
+function openMobileMenu(){
+  document.getElementById('mobileMenu').classList.add('open');
+  document.getElementById('mobileOverlay').classList.add('show');
+}
+function closeMobileMenu(){
+  document.getElementById('mobileMenu').classList.remove('open');
+  document.getElementById('mobileOverlay').classList.remove('show');
+}
+function toggleMobileDropdown(btn){
+  const content=btn.nextElementSibling;
+  if(!content) return;
+  content.style.display = (content.style.display==='block') ? 'none' : 'block';
+}
+
+window.addEventListener('scroll',()=>{
+  const header=document.querySelector('.premium-header');
+  if(window.scrollY>20) header.classList.add('scrolled');
+  else header.classList.remove('scrolled');
+});
+
+function submitCareerForm(event){
+  event.preventDefault();
+  const name=document.getElementById('c-name').value;
+  alert('Thank you, ' + name + '! Your application has been submitted.');
+  document.getElementById('careerForm').reset();
+}
+
+document.addEventListener('DOMContentLoaded',()=>{
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.getElementById('home').classList.add('active');
+});
+function toggleFAQ(btn){
+  let answer = btn.nextElementSibling;
+  let arrow = btn.querySelector(".faq-arrow");
+
+  if(answer.style.display === "block"){
+    answer.style.display = "none";
+    arrow.style.transform = "rotate(0deg)";
+  } else {
+    answer.style.display = "block";
+    arrow.style.transform = "rotate(180deg)";
+  }
+}
+
+function expandAll(){
+  document.querySelectorAll(".faq-answer").forEach(a => a.style.display = "block");
+  document.querySelectorAll(".faq-arrow").forEach(ar => ar.style.transform = "rotate(180deg)");
+}
+
+function collapseAll(){
+  document.querySelectorAll(".faq-answer").forEach(a => a.style.display = "none");
+  document.querySelectorAll(".faq-arrow").forEach(ar => ar.style.transform = "rotate(0deg)");
+}
+
+
+function openPopup(){
+  document.getElementById("popupForm").classList.add("show");
+}
+
+function closePopup(){
+  document.getElementById("popupForm").classList.remove("show");
+}
+
+
+document.addEventListener("click", function(e){
+  const popup = document.getElementById("popupForm");
+  if(e.target === popup){
+    closePopup();
+  }
+});
+
+let currentSlide = 0;
+const slides = document.querySelectorAll(".hero-slide");
+const dotContainer = document.querySelector(".hero-dots");
+
+
+slides.forEach((_, i) => {
+    const dot = document.createElement("span");
+    dot.onclick = () => showSlide(i);
+    dotContainer.appendChild(dot);
+});
+
+function showSlide(index) {
+    slides[currentSlide].classList.remove("active");
+    dotContainer.children[currentSlide].classList.remove("active");
+
+    currentSlide = (index + slides.length) % slides.length;
+
+    slides[currentSlide].classList.add("active");
+    dotContainer.children[currentSlide].classList.add("active");
+}
+
+function nextSlide() { showSlide(currentSlide + 1); }
+function prevSlide() { showSlide(currentSlide - 1); }
+
+</script>
+
+</body>
+</html>
